@@ -8,16 +8,16 @@ if (!address) {
     console.log('Please provide a location')
 } else {
     if(address) {
-        geocode(address, (error, geocodeData) => {
+        geocode(address, (error, {latitude, longitude, location} = {}) => {
             if (error) {
                 return console.log('error')
             }
         
-            forcast(geocodeData.latitude, geocodeData.longitude, (error, forcastData) => {
+            forcast(latitude, longitude, (error, forcastData) => {
                 if (error) {
                     return console.log(error)
                 }
-                console.log(geocodeData.location)
+                console.log(location)
                 console.log(forcastData)
             })
         })
